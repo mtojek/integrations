@@ -1,6 +1,13 @@
 version: '2.3'
 services:
   kube-state-metrics:
+    depends_on:
+      - kube-state-metrics-backend
+    build: .
+    ports:
+      - 0.0.0.0:8888:8888
+
+  kube-state-metrics-backend:
     # Commented out `image:` below until we have a process to refresh the hosted images from
     # Dockerfiles in this repo. Until then, we build the image locally using `build:` below.
     # image: docker.elastic.co/integrations-ci/beats-apache:${SERVICE_VERSION:-2.4.20}-1
