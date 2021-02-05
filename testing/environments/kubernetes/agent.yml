@@ -22,14 +22,16 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: agent-ingest-management-nodescope
-          image: docker.elastic.co/beats/elastic-agent:8.0.0-SNAPSHOT
+          image: docker.elastic.co/beats/elastic-agent:7.10.0-SNAPSHOT
           env:
             - name: FLEET_ENROLL
+              value: "1"
+            - name: FLEET_ENROLL_INSECURE
               value: "1"
             - name: FLEET_ENROLLMENT_TOKEN
               value:
             - name: KIBANA_HOST
-              value: "http://kibana:5601"
+              value: "http://elastic-package-stack_kibana_1.elastic-package-stack_default:5601"
             - name: NODE_NAME
               valueFrom:
                 fieldRef:
@@ -81,14 +83,16 @@ spec:
       serviceAccountName: agent-ingest-management
       containers:
         - name: agent-ingest-management-clusterscope
-          image: docker.elastic.co/beats/elastic-agent:8.0.0-SNAPSHOT
+          image: docker.elastic.co/beats/elastic-agent:7.10.0-SNAPSHOT
           env:
             - name: FLEET_ENROLL
+              value: "1"
+            - name: FLEET_ENROLL_INSECURE
               value: "1"
             - name: FLEET_ENROLLMENT_TOKEN
               value:
             - name: KIBANA_HOST
-              value: "http://kibana:5601"
+              value: "http://elastic-package-stack_kibana_1.elastic-package-stack_default:5601"
             - name: NODE_NAME
               valueFrom:
                 fieldRef:
