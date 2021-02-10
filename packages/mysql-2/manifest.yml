@@ -51,4 +51,6 @@ vars:
     default: "test"
 ilm_policies:
   - name: custom-hot-warm-logs
+    # more properties
   - name: custom-hot-warm-metrics
+    # more properties
