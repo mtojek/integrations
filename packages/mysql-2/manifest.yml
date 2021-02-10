@@ -1,0 +1,54 @@
+integration_sets:
+  - name: basic
+    integration_policies:
+      logs:
+        inputs:
+          - name: error
+            ilm_policy: custom-hot-warm-logs
+            vars: ~ # ...
+          - name: slowlog
+            ilm_policy: hot-warm
+            vars: ~ # ...
+        vars: ~ # ...
+      metrics:
+        inputs:
+          - name: perf
+            ilm_policy: custom-hot-warm-metrics
+            vars: ~ # ...
+    vars: ~ # ...
+  - name: enterprise
+    integration_policies:
+      logs: ~ # ...
+      metrics: ~ #...
+  - name: galera
+    integration_policies:
+      metrics: ~ # ...
+  - name: traffic
+    integration_policies:
+      packets:
+        inputs:
+          - name: database_connection
+  - name: uptime
+    integration_policies:
+      synthetics:
+        inputs:
+          - name: database_port_liveness
+            vars: ~ # ...
+          - name: database_host_ping
+            vars: ~ # ...
+vars:
+  - name: mysql_dsn
+    title: MySQL DSN
+    type: text
+    default: "tcp(127.0.0.1:3306)/"
+  - name: mysql_username
+    title: Username
+    type: text
+    default: "root"
+  - name: mysql_password
+    title: Password
+    type: password
+    default: "test"
+ilm_policies:
+  - name: custom-hot-warm-logs
+  - name: custom-hot-warm-metrics

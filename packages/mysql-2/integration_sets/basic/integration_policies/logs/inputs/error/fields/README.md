@@ -1,0 +1,1 @@
+Folder with fields for "error" integration set

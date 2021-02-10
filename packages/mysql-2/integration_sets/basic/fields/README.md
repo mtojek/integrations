@@ -1,0 +1,1 @@
+Folder with common fields for "basic" integration set
